@@ -1,5 +1,7 @@
-import { contextBridge } from "electron";
+import { ipcRenderer } from "electron";
 
-export const api = {};
-
-contextBridge.exposeInMainWorld("api", api);
+window.addEventListener("message", (event) => {
+    if (event.data?.type === "notification-click") {
+        ipcRenderer.send("notificationClick");
+    }
+});

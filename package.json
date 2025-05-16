@@ -29,7 +29,7 @@
     "@types/react": "^19.1.4",
     "@types/react-dom": "^19.1.5",
     "electron": "^36.2.1",
-    "electron-builder": "^24.13.3",
+    "electron-builder": "^26.0.12",
     "rimraf": "^6.0.1",
     "tsx": "^4.19.4",
     "typescript": "^5.8.3"
