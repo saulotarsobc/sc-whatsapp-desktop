@@ -1,13 +1,8 @@
 import Logger from "electron-log";
 import { exec } from "node:child_process";
 import { join } from "node:path";
-import { isDev } from "sc-prepare-next";
+import { isDev } from "../constants";
 
-/**
- * Initializes the logs by executing a command to list the files in the specified directory.
- *
- * @return {Promise<void>} A promise that resolves when the logs have been initialized.
- */
 export function initLogs(): void {
   const directoryPath = join(__dirname, "..", "..");
   const command =

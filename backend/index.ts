@@ -1,6 +1,6 @@
 import { app, BrowserWindow } from "electron";
 import { join } from "node:path";
-import { isDev } from "sc-prepare-next";
+import { isDev } from "./constants";
 import { initLogs } from "./utils";
 
 function createWindow(): void {
@@ -24,19 +24,14 @@ function createWindow(): void {
   }
 }
 
-app.whenReady().then(async () => {
-  initLogs();
-
-  createWindow();
-
-  app.on("activate", () => {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow();
-  });
-});
-
-/* ++++++++++ events ++++++++++ */
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") app.quit();
 });
 
-/* ++++++++++ code ++++++++++ */
+app.whenReady().then(async () => {
+  initLogs();
+  createWindow();
+  app.on("activate", () => {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  });
+});

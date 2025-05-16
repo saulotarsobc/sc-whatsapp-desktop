@@ -22,8 +22,7 @@
     "update:readme": "tsx scripts/update-readme.js"
   },
   "dependencies": {
-    "electron-log": "^5.4.0",
-    "sc-prepare-next": "^1.0.3"
+    "electron-log": "^5.4.0"
   },
   "devDependencies": {
     "@types/node": "^22.15.18",
