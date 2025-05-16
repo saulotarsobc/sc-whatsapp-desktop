@@ -1,0 +1,38 @@
+{
+  "name": "sc-whatsapp-desktop",
+  "displayName": "sc-whatsapp-desktop",
+  "version": "1.0.0",
+  "description": "sc-whatsapp-desktop",
+  "private": false,
+  "license": "MIT",
+  "main": "dist/index.js",
+  "author": {
+    "name": "Saulo Costa",
+    "email": "saulotarsobc@gmail.com",
+    "url": "https://github.com/saulotarsobc"
+  },
+  "scripts": {
+    "dev": "npm run build:backend && electron . --dev",
+    "prebuild": "rimraf out && rimraf dist && rimraf frontend/.next && rimraf frontend/out",
+    "build": "npm run build:frontend && npm run build:backend",
+    "build:frontend": "next build frontend",
+    "build:backend": "tsc -p backend",
+    "postinstall": "electron-builder install-app-deps",
+    "dist": "npm run build && npx electron-builder",
+    "update:readme": "tsx scripts/update-readme.js"
+  },
+  "dependencies": {
+    "electron-log": "^5.4.0",
+    "sc-prepare-next": "^1.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.18",
+    "@types/react": "^19.1.4",
+    "@types/react-dom": "^19.1.5",
+    "electron": "^36.2.1",
+    "electron-builder": "^26.0.12",
+    "rimraf": "^6.0.1",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}
