@@ -1,7 +1,6 @@
-import { ipcRenderer } from "electron";
+import { contextBridge, ipcRenderer } from "electron";
 
-window.addEventListener("message", (event) => {
-    if (event.data?.type === "notification-click") {
-        ipcRenderer.send("notificationClick");
-    }
+contextBridge.exposeInMainWorld("whatsAppBridge", {
+    sendMessageEvent: (msg: any) => ipcRenderer.send("new-incoming-message", msg),
+    notifyClick: () => ipcRenderer.send("notificationClick")
 });

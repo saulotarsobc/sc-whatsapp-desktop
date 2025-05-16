@@ -41,6 +41,12 @@ function createWindow(): void {
   `);
   });
 
+  whatsapp.webContents.on('page-title-updated', (_event, title) => {
+    const match = title.match(/\((\d+)\)/);
+    const count = match ? match[1] : '';
+    console.log({ count, title })
+  })
+
   if (isDev) {
     whatsapp.webContents.openDevTools();
     whatsapp.maximize();
@@ -67,4 +73,6 @@ ipcMain.on("notificationClick", () => {
     whatsapp.setAlwaysOnTop(false);
   }
 });
+
+
 
