@@ -5,6 +5,8 @@ import { initLogs } from "./utils";
 
 function createWindow(): void {
   const whatsapp = new BrowserWindow({
+    width: 1200,
+    height: 800,
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
@@ -16,11 +18,12 @@ function createWindow(): void {
     userAgent: 'Mozilla/5.0 (X11; Linux x86_64; rv:101.0) Gecko/20100101 Firefox/101.0',
   });
 
+  whatsapp.setTitle("SC - Whatsapp Desktop");
+  whatsapp.setMenu(null);
+
   if (isDev) {
     whatsapp.webContents.openDevTools();
     whatsapp.maximize();
-  } else {
-    whatsapp.setMenu(null);
   }
 }
 

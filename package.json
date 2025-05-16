@@ -13,9 +13,9 @@
   },
   "scripts": {
     "dev": "npm run build:backend && electron . --dev",
-    "prebuild": "rimraf out && rimraf dist && rimraf frontend/.next && rimraf frontend/out",
-    "build": "npm run build:frontend && npm run build:backend",
-    "build:frontend": "next build frontend",
+    "prebuild:clean": "rimraf out && rimraf dist",
+    "build:clean": "npm run build:backend",
+    "build": "npm run build:backend",
     "build:backend": "tsc -p backend",
     "postinstall": "electron-builder install-app-deps",
     "dist": "npm run build && npx electron-builder",
@@ -29,7 +29,7 @@
     "@types/react": "^19.1.4",
     "@types/react-dom": "^19.1.5",
     "electron": "^36.2.1",
-    "electron-builder": "^26.0.12",
+    "electron-builder": "^24.13.3",
     "rimraf": "^6.0.1",
     "tsx": "^4.19.4",
     "typescript": "^5.8.3"

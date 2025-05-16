@@ -1,4 +1,3 @@
-electronVersion: 36.2.1
 asar: true
 compression: normal
 productName: SC - Whatsapp Desktop
@@ -9,7 +8,6 @@ extraMetadata:
 
 files:
   - dist
-  - frontend/out
 
 directories:
   output: out
@@ -20,7 +18,6 @@ publish:
 win:
   target:
     - nsis
-  icon: ./build/icon.ico
   artifactName: ${name}-${version}-windows-${arch}.${ext}
   signAndEditExecutable: false
 
@@ -29,11 +26,9 @@ nsis:
   allowToChangeInstallationDirectory: true
   oneClick: false
   perMachine: true
-  installerIcon: ./build/icon.ico
 
 mac:
   target: dmg
-  icon: ./build/icon.ico
   artifactName: ${productName}-Setup-${version}.${ext}
   darkModeSupport: true
   signIgnore: null
@@ -42,5 +37,4 @@ linux:
   target:
     - AppImage
     - deb
-  icon: ./build/icon.ico
   artifactName: ${productName}-Setup-${version}.${ext}
