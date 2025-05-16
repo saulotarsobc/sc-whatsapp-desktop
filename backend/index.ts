@@ -4,7 +4,7 @@ import { isDev } from "./constants";
 import { initLogs } from "./utils";
 
 function createWindow(): void {
-  const win = new BrowserWindow({
+  const whatsapp = new BrowserWindow({
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
@@ -12,15 +12,15 @@ function createWindow(): void {
     },
   });
 
-  win.loadURL('https://web.whatsapp.com', {
+  whatsapp.loadURL('https://web.whatsapp.com', {
     userAgent: 'Mozilla/5.0 (X11; Linux x86_64; rv:101.0) Gecko/20100101 Firefox/101.0',
   });
 
   if (isDev) {
-    win.webContents.openDevTools();
-    win.maximize();
+    whatsapp.webContents.openDevTools();
+    whatsapp.maximize();
   } else {
-    win.setMenu(null);
+    whatsapp.setMenu(null);
   }
 }
 
