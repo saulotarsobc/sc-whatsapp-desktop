@@ -23,13 +23,13 @@
 
 <!-- Badge Start -->
 <div align="center">
- <img alt="static badge from nodejs" src="https://img.shields.io/badge/NodeJS-v22.15.0-44883e">
- <img alt="static badge from electronjs" src="https://img.shields.io/badge/ElectronJS-v36.2.0-46816e">
+ <img alt="static badge from nodejs" src="https://img.shields.io/badge/NodeJS-v22.15.1-44883e">
+ <img alt="static badge from electronjs" src="https://img.shields.io/badge/ElectronJS-v36.2.1-46816e">
  <img alt="static badge from electron builder" src="https://img.shields.io/badge/Electron%20Builder-v26.0.12-blue">
  <img alt="static badge from typescript" src="https://img.shields.io/badge/TypeScript-v5.8.3-blue">
- <img alt="static badge from nextjs" src="https://img.shields.io/badge/NextJS-v15.3.2-black">
- <img alt="static badge from reactjs" src="https://img.shields.io/badge/ReactJS-v19.1.0-61DAFB">
- <img alt="static badge from sequelize" src="https://img.shields.io/badge/Sequelize-v6.37.7-52B0E7">
+ <img alt="static badge from nextjs" src="https://img.shields.io/badge/NextJS-vN/A-black">
+ <img alt="static badge from reactjs" src="https://img.shields.io/badge/ReactJS-vN/A-61DAFB">
+ <img alt="static badge from sequelize" src="https://img.shields.io/badge/Sequelize-vN/A-52B0E7">
 </div>
 <!-- Badge End -->
 
@@ -70,11 +70,11 @@ npm run dev;
 ## electron-builder Configutarion to this project
 
 ```yaml
-electronVersion: 34.2.0
+electronVersion: 36.2.1
 asar: true
 compression: normal
-productName: SC - Next Electron
-appId: br.com.electron.next
+productName: SC - Whatsapp Desktop
+appId: br.com.desktop.whatsapp.sc
 
 extraMetadata:
   main: dist/index.js
@@ -92,26 +92,29 @@ publish:
 win:
   target:
     - nsis
-  icon: ./public/icon.png
+  icon: ./build/icon.ico
   artifactName: ${name}-${version}-windows-${arch}.${ext}
+  signAndEditExecutable: false
 
 nsis:
   artifactName: ${name}-${version}-windows-${arch}-nsis-installer.${ext}
   allowToChangeInstallationDirectory: true
   oneClick: false
   perMachine: true
+  installerIcon: ./build/icon.ico
 
 mac:
   target: dmg
-  icon: ./public/icon.png
+  icon: ./build/icon.ico
   artifactName: ${productName}-Setup-${version}.${ext}
   darkModeSupport: true
+  signIgnore: null
 
 linux:
   target:
     - AppImage
     - deb
-  icon: ./public/icon.png
+  icon: ./build/icon.ico
   artifactName: ${productName}-Setup-${version}.${ext}
 ```
 
