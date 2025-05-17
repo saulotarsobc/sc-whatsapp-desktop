@@ -1,5 +1,4 @@
 asar: true
-compression: normal
 productName: SC - Whatsapp Desktop
 appId: br.com.desktop.whatsapp.sc
 
@@ -11,6 +10,7 @@ files:
 
 directories:
   output: out
+  buildResources: build
 
 publish:
   - provider: github
@@ -20,6 +20,7 @@ win:
     - nsis
   artifactName: ${name}-${version}-windows-${arch}.${ext}
   signAndEditExecutable: false
+  icon: build/icon.ico
 
 nsis:
   artifactName: ${name}-${version}-windows-${arch}-nsis-installer.${ext}

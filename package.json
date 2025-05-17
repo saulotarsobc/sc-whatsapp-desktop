@@ -13,16 +13,12 @@
   },
   "scripts": {
     "dev": "npm run build:backend && electron . --dev",
-    "prebuild:clean": "rimraf out && rimraf dist",
-    "build:clean": "npm run build:backend",
-    "build": "npm run build:backend",
-    "build:backend": "tsc -p backend",
+    "clean": "rimraf out && rimraf dist",
+    "build": "tsc -p backend",
     "postinstall": "electron-builder install-app-deps",
+    "dist:clean": "npm run clean && npm run build && npx electron-builder",
     "dist": "npm run build && npx electron-builder",
     "update:readme": "tsx scripts/update-readme.js"
-  },
-  "dependencies": {
-    "electron-log": "^5.4.0"
   },
   "devDependencies": {
     "@types/node": "^22.15.18",
