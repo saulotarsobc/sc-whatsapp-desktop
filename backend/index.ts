@@ -1,7 +1,6 @@
 import { app, BrowserWindow, ipcMain } from "electron";
 import { join } from "node:path";
-import { isDev } from "./constants";
-import { initLogs } from "./utils";
+import { isDev, NOFIFY_SCRIPT } from "./constants";
 
 let whatsapp: BrowserWindow;
 
@@ -24,21 +23,7 @@ function createWindow(): void {
   whatsapp.setMenu(null);
 
   whatsapp.webContents.on('did-finish-load', () => {
-    whatsapp.webContents.executeJavaScript(`
-    (function() {
-      const NativeNotification = window.Notification;
-      window.Notification = function(title, options) {
-        const notification = new NativeNotification(title, options);
-        notification.addEventListener('click', function () {
-          window.postMessage({ type: 'notification-click' }, '*');
-        });
-        return notification;
-      };
-      window.Notification.prototype = NativeNotification.prototype;
-      window.Notification.permission = NativeNotification.permission;
-      window.Notification.requestPermission = NativeNotification.requestPermission.bind(NativeNotification);
-    })();
-  `);
+    whatsapp.webContents.executeJavaScript(NOFIFY_SCRIPT);
   });
 
   whatsapp.webContents.on('page-title-updated', (_event, title) => {
@@ -58,7 +43,6 @@ app.on("window-all-closed", () => {
 });
 
 app.whenReady().then(async () => {
-  initLogs();
   createWindow();
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
@@ -67,10 +51,9 @@ app.whenReady().then(async () => {
 
 ipcMain.on("notificationClick", () => {
   if (whatsapp) {
+    if (whatsapp.isMinimized()) whatsapp.restore();
     whatsapp.show();
-    whatsapp.setAlwaysOnTop(true);
     whatsapp.focus();
-    whatsapp.setAlwaysOnTop(false);
   }
 });
 
