@@ -2,9 +2,6 @@ asar: true
 productName: SC - Whatsapp Desktop
 appId: br.com.desktop.whatsapp.sc
 
-extraMetadata:
-  main: dist/index.js
-
 files:
   - dist
 
@@ -12,8 +9,8 @@ directories:
   output: out
   buildResources: build
 
-publish:
-  - provider: github
+# publish:
+#   - provider: github
 
 win:
   target:
@@ -27,6 +24,8 @@ nsis:
   allowToChangeInstallationDirectory: true
   oneClick: false
   perMachine: true
+  installerIcon: build/icon.ico
+  uninstallerIcon: build/icon.ico
 
 mac:
   target: dmg

@@ -12,7 +12,7 @@
     "url": "https://github.com/saulotarsobc"
   },
   "scripts": {
-    "dev": "npm run build:backend && electron . --dev",
+    "dev": "npm run build && electron . --dev",
     "clean": "rimraf out && rimraf dist",
     "build": "tsc -p backend",
     "postinstall": "electron-builder install-app-deps",
