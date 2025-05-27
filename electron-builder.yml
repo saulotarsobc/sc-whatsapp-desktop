@@ -9,9 +9,6 @@ directories:
   output: out
   buildResources: build
 
-# publish:
-#   - provider: github
-
 win:
   target:
     - nsis
